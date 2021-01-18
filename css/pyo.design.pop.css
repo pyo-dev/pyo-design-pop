@@ -1,0 +1,192 @@
+/*
+write : gray
+since : 2021-01-18
+*/
+.pyo-pop-open {
+  overflow: hidden;
+  height: 100%;
+  -ms-touch-action: none;
+      touch-action: none;
+}
+
+.pyo-design-pop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  display: none;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.pyo-design-pop.block {
+  display: block;
+}
+
+.pyo-design-pop.show {
+  opacity: 1;
+}
+
+.pyo-design-pop .left {
+  text-align: left;
+}
+
+.pyo-design-pop .center {
+  text-align: center;
+}
+
+.pyo-design-pop section, .pyo-design-pop article, .pyo-design-pop div, .pyo-design-pop h1, .pyo-design-pop h2, .pyo-design-pop h3, .pyo-design-pop h4, .pyo-design-pop h5, .pyo-design-pop h6, .pyo-design-pop p, .pyo-design-pop span, .pyo-design-pop a, .pyo-design-pop img, .pyo-design-pop button, .pyo-design-pop input, .pyo-design-pop select, .pyo-design-pop textarea {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.pyo-design-pop button {
+  cursor: pointer;
+  outline: 0;
+}
+
+.pyo-design-pop .flex-box {
+  height: 100%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.pyo-design-pop .pop-conents-wrap {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  width: 100%;
+  line-height: 1.5;
+  margin: auto;
+}
+
+.pyo-design-pop .pop-conents-wrap.basic {
+  max-width: 400px;
+  background-color: #fff;
+}
+
+.pyo-design-pop .pop-conents-wrap.basic .pop-title {
+  position: relative;
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.pyo-design-pop .pop-conents-wrap.basic .pop-title h1 {
+  font-size: 20px;
+}
+
+.pyo-design-pop .pop-conents-wrap.basic .pop-contents {
+  padding: 30px 15px;
+}
+
+.pyo-design-pop .pop-conents-wrap.basic .close-x {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: transparent;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: -webkit-transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out, -moz-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out, -moz-transform 0.3s ease-in-out;
+}
+
+.pyo-design-pop .pop-conents-wrap.basic .close-x i {
+  overflow: hidden;
+  border: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+}
+
+.pyo-design-pop .pop-conents-wrap.basic .close-x::before, .pyo-design-pop .pop-conents-wrap.basic .close-x::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 1px;
+  background-color: #000;
+}
+
+.pyo-design-pop .pop-conents-wrap.basic .close-x::before {
+  -webkit-transform: translate(-50%) rotate(-45deg);
+     -moz-transform: translate(-50%) rotate(-45deg);
+          transform: translate(-50%) rotate(-45deg);
+}
+
+.pyo-design-pop .pop-conents-wrap.basic .close-x::after {
+  -webkit-transform: translate(-50%) rotate(45deg);
+     -moz-transform: translate(-50%) rotate(45deg);
+          transform: translate(-50%) rotate(45deg);
+}
+
+.pyo-design-pop .pop-conents-wrap.basic .close-x:hover::before, .pyo-design-pop .pop-conents-wrap.basic .close-x:hover::after, .pyo-design-pop .pop-conents-wrap.basic .close-x:focus::before, .pyo-design-pop .pop-conents-wrap.basic .close-x:focus::after {
+  background-color: #b12828;
+}
+
+.pyo-design-pop .pop-conents-wrap.basic .bt-wrap {
+  margin-top: auto;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.pyo-design-pop .pop-conents-wrap.basic .bt-wrap > div {
+  -webkit-box-flex: 1;
+     -moz-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.pyo-design-pop .pop-conents-wrap.basic .bt-wrap > div button {
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  background: #ddd;
+  color: #000;
+}
+
+.pyo-design-pop .pop-conents-wrap.basic .bt-wrap > div button.bt-ok {
+  background: -moz-linear-gradient(45deg, #061161, #780206);
+  background: linear-gradient(45deg, #061161, #780206);
+  color: #fff;
+}
+
+.pyo-design-pop .pop-conents-wrap.basic .bt-wrap > div button:hover, .pyo-design-pop .pop-conents-wrap.basic .bt-wrap > div button:focus {
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+     -moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+}

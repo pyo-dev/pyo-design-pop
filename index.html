@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/pyo.design.pop.css" />
+</head>
+<body>
+<style>
+	#testbox{
+		height:500px;background:red;
+	}
+	#textPop,
+	.test-input{
+		padding: 20px;
+	}
+	.test-box{
+		margin-top: 20px;
+	}
+
+	.layout-change{
+		max-width: 1000px;
+		background-color: blue;
+	}
+</style>
+<div id="testbox"></div>
+<div class="test-box">
+	<button class="test-input" id="popBt1">기본 팝업</button>
+	<button class="test-input" id="popBt2">내용</button>
+	<button class="test-input" id="popBt3">타이틀</button>
+	<button class="test-input" id="popBt4">X버튼</button>
+	<button class="test-input" id="popBt5">사이즈 변경</button>
+	<button class="test-input" id="popBt6">버튼 순서 변경</button>
+	<button class="test-input" id="popBt7">버튼 이름 및 갯수 변경</button>
+	<button class="test-input" id="popBt8">버튼 콜백</button>
+	<button class="test-input" id="popBt9">레이아웃 변경</button>
+	<button class="test-input" id="popBt10">버튼 변경</button>
+	<button class="test-input" id="popBt11">팝업 remove</button>
+	<button class="test-input" id="popBt12">팝업 콜백 remove</button>
+</div>
+<div id="main-container"></div>
+<div style="height:3000px;"></div>
+
+<script src="js/pyo.design.pop.js"></script>
+<script>
+
+let bt1 = document.querySelector('#popBt1');
+let bt2 = document.querySelector('#popBt2');
+let bt3 = document.querySelector('#popBt3');
+let bt4 = document.querySelector('#popBt4');
+let bt5 = document.querySelector('#popBt5');
+let bt6 = document.querySelector('#popBt6');
+let bt7 = document.querySelector('#popBt7');
+let bt8 = document.querySelector('#popBt8');
+let bt9 = document.querySelector('#popBt9');
+let bt10 = document.querySelector('#popBt10');
+let bt11 = document.querySelector('#popBt11');
+let bt12 = document.querySelector('#popBt12');
+
+bt1.addEventListener('click', function(){
+	pyoDesignPop.openPop({
+		targetId : 'pop1', // only id - id
+	});
+});
+
+bt2.addEventListener('click', function(){
+	pyoDesignPop.openPop({
+		targetId : 'pop2', // only id - id
+		con : '내용입니다.', // null, string - contents
+		conAlign : 'center', // left, center - con text-align
+	});
+});
+
+bt3.addEventListener('click', function(){
+	pyoDesignPop.openPop({
+		targetId : 'pop3', // only id - id
+		title : '타이틀이지롱', // null, string - title
+		titleAlign : 'center', // left, center - title text-align
+		conAlign : 'center', // left, center - con text-align
+	});
+});
+
+bt4.addEventListener('click', function(){
+	pyoDesignPop.openPop({
+		targetId : 'pop4', // only id - id
+		closeBt : true, // false, true - close-x bt
+	});
+});
+
+bt5.addEventListener('click', function(){
+	pyoDesignPop.openPop({
+		targetId : 'pop5', // only id - id
+		maxWidth : 600, // null, number - max-width
+		minHetight : 400, // null, number - min-height
+	});
+});
+
+bt6.addEventListener('click', function(){
+	pyoDesignPop.openPop({
+		targetId : 'pop6', // only id - id
+		buttonSet : { // button
+			reverse : true, // false, ture - button order
+		},
+	});
+});
+
+bt7.addEventListener('click', function(){
+	pyoDesignPop.openPop({
+		targetId : 'pop7', // only id - id
+		buttonArr : [ // button arry
+			{
+				class : 'bt-ok blue',
+				text : '크하닫아',
+			},
+			{
+				class : 'bt-cancle',
+				text : '???? 닫아',
+			},
+			{
+				id : 'testBt1',
+				text : '닫을까?',
+			}
+		]
+	});
+});
+
+bt8.addEventListener('click', function(){
+	pyoDesignPop.openPop({
+		targetId : 'pop8', // only id - id
+		closeBt : true, // false, true - close-x bt
+		con : '<input type="text" id="textPop" placeholder="정답은 : 11"></input>', // null, string - contents
+		closeBtFun : function(t, res){
+			pyoDesignPop.openPop({
+				targetId : 'pop8-1', // only id - id
+				con : '나만닫아줭', // null, string - contents
+				conAlign : 'center', // left, center - con text-align
+				buttonArr : [ // button arry
+					{
+						class : 'bt-ok blue',
+						text : '그래',
+					},
+				]
+			});
+		},
+		okBttFun :  function(t, res){
+			let testInput = document.querySelector('#textPop');
+
+			if(testInput.value == 11){
+				t.closePop(res);
+			} else {
+				pyoDesignPop.openPop({
+					targetId : 'pop8-2', // only id - id
+					con : '틀렸잔아', // null, string - contents
+					conAlign : 'center', // left, center - con text-align
+					buttonArr : [ // button arry
+						{
+							class : 'bt-ok blue',
+							text : '그래',
+						},
+					]
+				});
+			}
+		},
+		cancaleBtFun :  function(t, res){
+			let parT = t;
+			let parRes = res;
+			pyoDesignPop.openPop({
+				targetId : 'pop8-3', // only id - id
+				con : '부모까지 닫자', // null, string - contents
+				conAlign : 'center', // left, center - con text-align
+				buttonArr : [ // button arry
+					{
+						class : 'bt-ok blue',
+						text : '그래',
+					},
+				],
+				okBttFun :  function(t, res){
+					parT.closePop(parRes);
+					t.closePop(res);
+				},
+			});
+		},
+	});
+});
+
+bt9.addEventListener('click', function(){
+	pyoDesignPop.openPop({
+		targetId : 'pop9', // only id - id
+		layoutClass : 'layout-change', // basic, etc - layout
+		padding : '50px 30px 100px;', // css padding
+		title : '타이틀이지롱', // null, string - title
+		closeBt : true, // false, true - close-x bt
+		con : '레이아웃을 변경 <br>레이아웃을 변경 <br>레이아웃을 변경 <br>레이아웃을 변경 <br>레이아웃을 변경 <br>레이아웃을 변경 <br>레이아웃을 변경 <br>', // null, string - contents
+	});
+});
+
+
+
+bt10.addEventListener('click', function(){
+	pyoDesignPop.openPop({
+		targetId : 'pop10', // only id - id
+		buttonSet : { // button
+			layOutChange : '<button type="button" id="pop10bt">버튼변경</button>', // null, string - layout change
+		},
+	});
+
+	let pop10bt = document.querySelector('#pop10bt');
+	let pop10btEvent = function(e){
+		pyoDesignPop.closePop({
+			targetId : 'pop10', // only id - id
+		});
+		e.target.removeEventListener('click', pop10btEvent);
+	}
+	pop10bt.addEventListener('click', pop10btEvent);
+});
+
+
+bt11.addEventListener('click', function(){
+	pyoDesignPop.openPop({
+		targetId : 'pop11', // only id - id
+		remove : true, // false, true - remove
+		con : '팝업 삭제', // null, string - contents
+	});
+});
+
+
+bt12.addEventListener('click', function(){
+	pyoDesignPop.openPop({
+		targetId : 'pop12', // only id - id
+		con : '팝업 삭제', // null, string - contents,
+		okBttFun :  function(t, res){
+			pyoDesignPop.openPop({
+				targetId : 'pop12-2', // only id - id
+				remove : true, // false, true - remove
+				maxWidth : 700,
+				con : '머머머머??????? 싫어', // null, string - contents
+				conAlign : 'center', // left, center - con text-align
+				buttonArr : [ // button arry
+					{
+						class : 'bt-ok blue',
+						text : '그래',
+					},
+				]
+			});
+		},
+	});
+});
+
+
+</script>
+</body>
+</html>

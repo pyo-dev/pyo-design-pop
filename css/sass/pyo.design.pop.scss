@@ -1,0 +1,143 @@
+@charset "utf-8";
+/*
+write : gray
+since : 2021-01-18
+*/
+$border-color-d1 : #ddd;
+$pointe-color-d1 : #1b4d8e;
+$pointe-color-d2 : #b12828;
+
+.pyo-pop-open{
+	overflow: hidden;
+	height: 100%;
+	touch-action: none;
+}
+
+.pyo-design-pop{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba($color: #000000, $alpha: 0.7);
+	opacity: 0;
+	display: none;
+	transition: opacity 0.3s ease-in-out;
+	&.block{
+		display: block;
+	}
+	&.show{
+		opacity: 1;
+	}
+	.left{
+		text-align: left;
+	}
+	.center{
+		text-align: center;
+	}
+	section, article, div, h1, h2, h3, h4, h5, h6, p, span, a, img, button, input, select, textarea{
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+	}
+	button{
+		cursor: pointer;
+		outline: 0;
+	}
+	.flex-box{
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+	.pop-conents-wrap{
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		width: 100%;
+		line-height: 1.5;
+		margin: auto;
+		&.basic{
+			max-width: 400px;
+			background-color: #fff;
+			.pop-title{
+				position: relative;
+				padding: 10px 15px;
+				border-bottom: 1px solid $border-color-d1;
+				h1{
+					font-size: 20px;
+				}
+			}
+			.pop-contents{
+				padding: 30px 15px;
+			}
+			.close-x{
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 50px;
+				height: 50px;
+				border: none;
+				background-color: transparent;
+				transition: transform 0.3s ease-in-out;
+				i{
+					overflow: hidden;
+					border: 0;
+					position: absolute;
+					width: 1px;
+					height: 1px;
+					clip: rect(1px, 1px, 1px, 1px);
+					clip-path: inset(50%);
+				}
+				&::before,
+				&::after{
+					content: '';
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					width: 50%;
+					height: 1px;
+					background-color: #000;
+				}
+				&::before{
+					transform: translate(-50%) rotate(-45deg);
+				}
+				&::after{
+					transform: translate(-50%) rotate(45deg);
+				}
+				&:hover,
+				&:focus{
+					&::before,
+					&::after{
+						background-color: $pointe-color-d2;
+					}
+				}
+			}
+			.bt-wrap{
+				margin-top: auto;
+				// padding: 5px;
+				display: flex;
+				> div{
+					flex: 1;
+					// padding: 5px;
+					button{
+						width: 100%;
+						padding: 10px 0;
+						border: none;
+						background: #ddd;
+						color: #000;
+						&.bt-ok{
+							background: linear-gradient(45deg, #061161, #780206);
+							color: #fff;
+						}
+						&:hover,
+						&:focus{
+							box-shadow: 0 3px 5px rgba($color: #000, $alpha: 0.5);
+						}
+					}
+				}
+			}
+		}
+	}
+}
