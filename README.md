@@ -1,3 +1,3 @@
 # pyo-design-pop
 
-<링크주소>{: target="_blank"}
+demo : https://pyo-dev.github.io/pyo-design-pop/
